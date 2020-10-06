@@ -50,7 +50,7 @@ public class Meat implements FoodProduct {
     public double weight() {
         return weight;
     }
-    @Override
+
     public double calories_per_100g(){
         return type.calories_per_100g();
     }

@@ -7,14 +7,16 @@ public class Sauce implements FoodProduct {
     public enum SauceType implements FoodConstituent{
         BURGER, BARBECUE, BEARNAISE;
 
-       public double  caloriesPer100Grams() {
-           double calorie = 0.0;
-           if (this == BURGER) return 240;
-           if (this == BARBECUE) return 130;
-           if (this == BEARNAISE) return 550;
-           else return calorie;
 
-       }
+        @Override
+        public double calories_per_100g() {
+            double calorie = 0.0;
+            if (this == BURGER) return 240;
+            if (this == BARBECUE) return 130;
+            if (this == BEARNAISE) return 550;
+            else return calorie;
+        }
+
     }
 
     private static double BASE_PRICE = 1;
@@ -32,7 +34,7 @@ public class Sauce implements FoodProduct {
     }
 
     public double caloriesPer100grams() {
-        return this.type.caloriesPer100Grams();
+        return this.type.calories_per_100g();
     }
 
     public double weight() {
