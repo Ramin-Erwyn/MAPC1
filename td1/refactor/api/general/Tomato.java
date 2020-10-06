@@ -11,27 +11,22 @@ public class Tomato implements FoodProduct {
         this.weight = weight;
     }
 
-    @Override
     public double caloriesPer100grams() {
         return 21;
     }
 
-    @Override
     public double calories() {
         return this.caloriesPer100grams() * this.weight() / 100;
     }
 
-    @Override
     public double weight() {
         return weight;
     }
 
-    @Override
     public double price() {
         return BASE_PRICE * weight / 100;
     }
 
-    @Override
     public String toString() {
         return String.format("tomato, qty: %.0f -- %.2f", weight(), price());
     }

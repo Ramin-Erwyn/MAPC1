@@ -1,4 +1,4 @@
-package td1.refactory.api.general;
+package td1.refactor.api.general;
 
 import td1.refactor.api.general.Product;
 

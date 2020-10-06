@@ -1,6 +1,5 @@
 package td1.refactor.api.general;
 
-import td1.refactory.api.general.FoodProduct;
 
 import java.util.List;
 
@@ -14,27 +13,22 @@ public class Burger implements FoodProduct {
         this.items = items;
     }
 
-    @Override
     public double calories() {
         return Math.ceil(items.stream().map(FoodProduct::calories).reduce(0.0, Double::sum));
     }
 
-    @Override
     public double caloriesPer100grams() {
         return Math.ceil(this.calories() * 100 / this.weight());
     }
 
-    @Override
     public double weight() {
         return Math.ceil(items.stream().map(FoodProduct::weight).reduce(0.0, Double::sum));
     }
 
-    @Override
     public double price() {
         return items.stream().map(FoodProduct::price).reduce(0.0, Double::sum);
     }
 
-    @Override
     public String toString() {
         final String DELIM = "--------------------\n";
         StringBuilder buffer = new StringBuilder();

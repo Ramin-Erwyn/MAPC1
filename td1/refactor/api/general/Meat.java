@@ -1,52 +1,61 @@
 package td1.refactor.api.general;
-
-import td1.refactory.api.general.FoodProduct;
-
+import td1.refactor.api.general.FoodProduct.*;
+import td1.refactor.api.general.FoodConstituent;
 public class Meat implements FoodProduct {
 
-    public enum MeatType {
+    public enum MeatType implements FoodConstituent {
         BEEF, WHITEFISH;
-        private MeatType type;
-        private double weight;
 
 
-        public Double price(){
-            double rtr=0;
-            if(this == WHITEFISH) {rtr= 6;}
-            else {return rtr;}
-            if (this == BEEF) {rtr =4;}
-            else {return rtr;}
+        public double calories_per_100g(){
+            double rtr = 0;
+            switch (this) {
+                case WHITEFISH:
+                    rtr = 170;
+                    break;
+                case BEEF :
+                default:
+                    rtr = 200;
+            }
+            return rtr;
         }
-
-        public int caloriesPer100grams() {
-            double calorie = 0;
-            if(this == BEEF) return 200;
-            if(this == WHITEFISH) return 170;
-            else return (int) calorie;
+        public double price() {
+            double rtr;
+            switch (this) {
+                case WHITEFISH:
+                    rtr = 6;
+                    break;
+                case BEEF:
+                default:
+                    rtr = 4;
+            }
+            return rtr;
         }
+    }
 
+    private MeatType type;
+    private double weight;
 
-
-     MeatType(MeatType type, double weight) {
+    public Meat(MeatType type, double weight) {
         this.type = type;
         this.weight = weight;
     }
 
-
-    public Double price() {
+    @Override
+    public double price() {
         return type.price() * weight / 100;
     }
-    public double caloriesPer100grams() {
-        return this.type.caloriesPer100grams();
-    }
 
-    public double calories() {
-        return this.caloriesPer100grams() * this.weight() / 100;
-    }
-
-    public Double weight() {
+    @Override
+    public double weight() {
         return weight;
     }
+    @Override
+    public double calories_per_100g(){
+        return type.calories_per_100g();
+    }
+
+    @Override
     public String toString() {
         return String.format("%s (%.0fg) -- %.2f€", type, weight(), price());
     }

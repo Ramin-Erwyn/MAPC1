@@ -12,27 +12,27 @@ public class Cheddar implements FoodProduct {
         this.weight = weight;
     }
 
-    @Override
+     // @Override
     public double caloriesPer100grams() {
         return 400;
     }
 
-    @Override
+    // @Override
     public double calories() {
         return this.caloriesPer100grams() * this.weight() / 100;
     }
 
-    @Override
+    // @Override
     public double weight() {
         return weight;
     }
 
-    @Override
+    // @Override
     public double price() {
         return BASE_PRICE * weight / 100;
     }
 
-    @Override
+    // @Override
     public String toString() {
         return String.format("cheddar (%.0fg) -- %.2f€", weight(), price());
     }

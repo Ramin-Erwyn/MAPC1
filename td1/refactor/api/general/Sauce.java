@@ -1,10 +1,10 @@
 package td1.refactor.api.general;
 
-import td1.refactory.api.general.FoodProduct;
+import td1.refactor.api.general.FoodProduct;
 
 public class Sauce implements FoodProduct {
 
-    public enum SauceType {
+    public enum SauceType implements FoodConstituent{
         BURGER, BARBECUE, BEARNAISE;
 
        public double  caloriesPer100Grams() {
@@ -27,27 +27,22 @@ public class Sauce implements FoodProduct {
         this.weight = weight;
     }
 
-    @Override
     public double price() {
         return BASE_PRICE;
     }
 
-    @Override
     public double caloriesPer100grams() {
         return this.type.caloriesPer100Grams();
     }
 
-    @Override
     public double weight() {
         return weight;
     }
 
-    @Override
     public double calories() {
         return this.caloriesPer100grams() * this.weight() / 100;
     }
 
-    @Override
     public String toString() {
         return String.format("%s sauce (%.0fg) -- %.2f€", type, weight(), price());
     }
